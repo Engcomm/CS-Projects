@@ -5,9 +5,16 @@ using namespace std;
 
 int main()
 {
-  int a = 2, b = 1;
-  double c = 0;
-  c = ((double)b)/((double)a);
-  cout << c;
+  /*
+  double a, b;
+  a = 1/3;
+  b = 8/3;
+  double c = a + b;
+  cout << c << endl;
+  */
+
+  string x = "mdzz";
+  cout << x.length() << endl;
+
 
 }

@@ -17,13 +17,3 @@ Rectangle::Rectangle(int a, int b)
   height = b;
 }
 
-int main()
-{
-  Rectangle rect(3,4);
-  Rectangle rect2(5,6);
-  cout << "Rect area: " << rect.area() << endl;
-  cout << "Rect2 area: " << rect2.area() << endl;
-  return 0;
-
-
-}
