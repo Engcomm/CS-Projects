@@ -27,7 +27,8 @@ main:
 	syscall
 	move $t0, $v0
 
-	beq $t0, $zero, Error
+	blt $t0, 1, Error
+	bgt $t0, 47, Error
 	
 	li $t1, 0
 	li $t2, 1
@@ -110,7 +111,7 @@ Error:
 	la $a0, error
 	li $v0, 4
 	syscall
-	j End
+	j main
 
 End:
 	li $v0, 10
