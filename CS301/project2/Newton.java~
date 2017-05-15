@@ -1,0 +1,65 @@
+
+
+import java.io.*;
+
+public class Newton {
+
+	private int control;
+	private double ea;
+	private Double[] Ea;
+	private Double[] Et;
+	
+	public Newton(int control) {
+		this.control = control;
+	}
+	
+	public double solveEquation(double x, int nmax) throws IOException{
+		double fx = Equation.fx(control, x), dx, d, prevX = -999;
+		int n = 0;
+		Ea = new Double[nmax];
+		Et = new Double[nmax];
+		ea = 0;
+		Ea[0] = 0.0;
+		Et[0] = 0.0;
+		System.out.println("n    xn             f(xn)          ea");
+		outputFormat(n, x, fx, ea);
+		for(n = 1; n < nmax; n++) {
+			dx = Equation.dx(control, x);
+			d = fx / dx;
+			x = x - d;
+			fx = Equation.fx(control, x);
+			if(prevX != -999)
+				ea = Math.abs(prevX - x) / Math.abs(x);
+			prevX = x;
+			Ea[n] = ea;
+			Et[n] = Math.log10((Math.abs(x - 126.63351346432101)) / 126.63351346432101);
+			outputFormat(n, x, fx, ea);
+			if(ea != 0 && ea < 0.00001) {
+				System.out.println("Root found");
+				FileWriter output = new FileWriter("E:/CS-Projects/CS301/project2/newton.txt");
+				for(int i = 0; i < n; i++) {
+					output.write(Ea[i].toString());
+					output.write("\t");
+				}
+				output.write("\n");
+				for(int i = 0; i < n; i++) {
+					output.write(Et[i].toString());
+					output.write("\t");
+				}
+				output.close();
+				return x;
+			}
+		}
+		return -999;
+	}
+	
+	private void outputFormat(int n, double x, double fx, double ea) {
+		System.out.printf("%-5d", n);
+		System.out.printf("%.11f", x);
+		System.out.print("  ");
+		System.out.printf("%.11f", fx);
+		System.out.print("  ");
+		System.out.printf("%.11f", ea);
+		System.out.println();
+	}
+}

@@ -1,0 +1,60 @@
+
+
+import java.io.*;
+
+public class ModifiedSecant {
+	private int control;
+	private double ea;
+	private Double[] Ea;
+	private Double[] Et;
+	
+	public ModifiedSecant(int control) {
+		this.control = control;
+	}
+	
+	public double solveEquation(double x, int nmax, double E) throws IOException {
+		double fx = Equation.fx(control, x);
+		double prevX = -999, d;
+		Ea = new Double[nmax];
+		Et = new Double[nmax];
+		ea = 0;
+		System.out.println("n    xn               f(xn)            ea");
+		for(int n = 0; n < nmax; n++) {
+			d = fx * ((E * x) / (Equation.fx(control, x + E * x) - fx));
+			x = x - d;
+			if(prevX != -999)
+				ea = Math.abs(prevX - x) / Math.abs(x);
+			prevX = x;
+			outputFormat(n, x, fx, ea);
+			if((ea != 0 && ea < 0.00001)) {
+				System.out.println("Root found");
+				FileWriter output = new FileWriter("E:/CS-Projects/CS301/project2/modifiedSecant.txt");
+				for(int i = 0; i < n; i++) {
+					output.write(Ea[i].toString());
+					output.write("\t");
+				}
+				output.write("\n");
+				for(int i = 0; i < n; i++) {
+					output.write(Et[i].toString());
+					output.write("\t");
+				}
+				output.close();
+				return x;
+			}
+			Ea[n] = Math.log10(ea);
+			Et[n] = Math.log10((Math.abs(x - 126.63351346432101)) / 126.63351346432101);
+			fx = Equation.fx(control, x);
+		}
+		return -999;	
+	}
+	
+	private void outputFormat(int n, double x, double fx, double ea) {
+		System.out.printf("%-5d", n);
+		System.out.printf("%.11f", x);
+		System.out.print("  ");
+		System.out.printf("%.11f", fx);
+		System.out.print("  ");
+		System.out.printf("%.11f", ea);
+		System.out.println();
+	}
+}

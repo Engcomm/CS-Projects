@@ -1,0 +1,73 @@
+
+
+import java.io.*;
+
+public class FalsePosition {
+	private int control;
+	private double ea;
+	private Double[] Ea;
+	private Double[] Et;
+	
+	public FalsePosition(int control) {
+		this.control = control;
+	}
+	
+	public double solveEquation(double a, double b, int nmax) throws IOException {	
+		double fa = Equation.fx(control, a);
+		double fb = Equation.fx(control, b);
+		double c = 0, prevC = -999, fc;
+		Ea = new Double[nmax];
+		Et = new Double[nmax];
+		ea = 0;
+		System.out.println("n    cn             f(cn)          ea");
+		for(int n = 0; n < nmax; n++) {
+			if(fa * fb < 0)
+				c = (a * fb - 2 * b * fa) / (fb - 2 * fa);
+			else 
+				c = (2 * a * fb - b * fa) / (2 * fb - fa);
+			fc = Equation.fx(control, c);
+			if(prevC != -999)
+				ea = Math.abs(prevC - c) / Math.abs(c);
+			prevC = c;
+			outputFormat(n, c, fc, ea);
+			if(ea != 0 && ea < 0.00001) {
+				System.out.println("Root found");
+				FileWriter output = new FileWriter("E:/CS-Projects/CS301/project2/falsePosition.txt");
+				for(int i = 0; i < n; i++) {
+					output.write(Ea[i].toString());
+					output.write("\t");
+				}
+				output.write("\n");
+				for(int i = 0; i < n; i++) {
+					output.write(Et[i].toString());
+					output.write("\t");
+				}
+				output.close();
+				return c;
+			}
+			Ea[n] = Math.log10(ea);
+			Et[n] = Math.log10((Math.abs(c - 126.63351346432101)) / 126.63351346432101);
+			if(fa * fc > 0) {
+				a = c;
+				fa = Equation.fx(control, a);
+			}
+			else {
+				b = c;
+				fb = Equation.fx(control, b);
+			}
+			
+			
+		}
+		return -999;
+	}
+	
+	private void outputFormat(int n, double x, double fx, double ea) {
+		System.out.printf("%-5d", n);
+		System.out.printf("%.11f", x);
+		System.out.print("  ");
+		System.out.printf("%.11f", fx);
+		System.out.print("  ");
+		System.out.printf("%.11f", ea);
+		System.out.println();
+	}
+}

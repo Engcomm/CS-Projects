@@ -1,0 +1,111 @@
+
+import java.util.*;
+import java.io.*;
+
+public class LocateRoots {
+
+	public static void main(String[] args) throws IOException{
+		Scanner kb = new Scanner(System.in);
+		System.out.print("Choose the equation to be tested\n1. 2x3 - 11.7x2 + 17.7x - 5\n2. x + 10 - xcosh(50/x)\nYou choose: ");
+		int eq = kb.nextInt();
+		System.out.print("Choose the method\n1. Bisection\n2. Secant\n3. Newton\n4. False Position\n5. Modified Secant\nYou choose: ");
+		int method = kb.nextInt();
+		if(eq != 1 && eq != 2)
+			System.out.println("Invalid Input!");
+		else {
+			switch(method) {
+				case 1: bisection(eq);
+				break;
+				case 2: secant(eq);
+				break;
+				case 3: newton(eq);
+				break;
+				case 4: falsePosition(eq);
+				break;
+				case 5: modifiedSecant(eq);
+				break;
+			}
+		}
+	}
+	
+	public static void bisection(int control) throws IOException{
+		double root = 0;
+		double points[] = choosePoints(2);
+		Bisection bis = new Bisection(control);
+		root = bis.solveEquation(points[0], points[1], 100);
+		if(root != -999) {
+			System.out.println(root);
+			//System.out.println(Equation.fx(1, root));
+		}
+		else if (root == -998)
+			System.out.println("No root or Divergent");
+	}
+	
+	public static void secant(int control) throws IOException{
+		double root = 0;
+		double points[] = choosePoints(2);
+		Secant sec = new Secant(control);
+		root = sec.solveEquation(points[0], points[1], 100);
+		if(root != -999) {
+			System.out.println(root);
+			//System.out.println(Equation.fx(1, root));
+		}
+		else
+			System.out.println("No root");
+	}
+	
+	public static void newton(int control) throws IOException{
+		double root = 0;
+		double points[] = choosePoints(1);
+		Newton ntn = new Newton(control);
+		root = ntn.solveEquation(points[0], 100);
+		if(root != -999) {
+			System.out.println(root);
+			//System.out.println(Equation.fx(1, root));
+		}
+		else
+			System.out.println("Either no root or convergent very slow");
+	}
+	
+	public static void falsePosition(int control) throws IOException{
+		double root = 0;
+		double points[] = choosePoints(2);
+		FalsePosition fposition = new FalsePosition(control);
+		root = fposition.solveEquation(points[0], points[1], 100);
+		if(root != -999)  {
+			System.out.println(root);
+			//System.out.println(Equation.fx(1, root));
+		}
+		else 
+			System.out.println("No root");
+	}
+	
+	public static void modifiedSecant(int control) throws IOException{
+		double root = 0;
+		double points[] = choosePoints(1);
+		ModifiedSecant msecant = new ModifiedSecant(control);
+		root = msecant.solveEquation(points[0], 100, 0.01);
+		if(root != -999) {
+			System.out.println(root);
+			//System.out.println(Equation.fx(1, root));
+		}
+		else 
+			System.out.println("No root");
+	}	
+	
+	public static double[] choosePoints(int numPoints) {
+		Scanner kb = new Scanner(System.in);
+		double[] points = new double[numPoints];
+		if(numPoints == 1) {
+			System.out.print("Choose one starting point x: ");
+			points[0] = kb.nextDouble();
+		}
+		else {
+			System.out.print("Choose two starting points a: ");
+			points[0] = kb.nextDouble();
+			System.out.print("And b: ");
+			points[1] = kb.nextDouble();
+		}
+		return points;
+	}
+}
