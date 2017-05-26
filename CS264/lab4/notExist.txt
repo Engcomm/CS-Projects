@@ -5,20 +5,20 @@ BadVAddr = 0
 Status   = 3000ff10
 
 HI       = 0
-LO       = 1ffffdb3
+LO       = 1ffffdba
 
 R0  [r0] = 0
 R1  [at] = 10010000
 R2  [v0] = a
 R3  [v1] = 0
-R4  [a0] = 10010098
-R5  [a1] = 7ffff6cc
-R6  [a2] = 7ffff6cc
+R4  [a0] = 10010085
+R5  [a1] = 7ffff6e8
+R6  [a2] = 7ffff6ec
 R7  [a3] = 7ffff6c8
-R8  [t0] = 0
-R9  [t1] = 1ffffdb3
-R10 [t2] = 7ffff6cc
-R11 [t3] = fffffffb
+R8  [t0] = 1ffffdbb
+R9  [t1] = 1ffffdba
+R10 [t2] = 7ffff6e8
+R11 [t3] = 7
 R12 [t4] = 0
 R13 [t5] = 7ffff6e8
 R14 [t6] = 0
@@ -457,5 +457,5 @@ Plase enter the integer: 6
 Plase enter the integer: -1
 Plase enter the integer: 5
 Your sorted integers: -5 -2 -1 3 4 5 6 7 
-Enter the integer you want to search for: -5
-Integer Found!
+Enter the integer you want to search for: 12
+Integer Not Found!

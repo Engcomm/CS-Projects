@@ -92,10 +92,7 @@ PrintLoop:
 	la $a0, WhiteSpace
 	li $v0, 4
 	syscall
-	bne $sp, $t5, PrintLoop    # Print sorted ints as in lab3
-	lw $a0, 0($sp)
-	li $v0, 1
-	syscall
+	ble $sp, $t5, PrintLoop    # Print sorted ints as in lab3
 	
 	la $a0, Prompt4    # Print prompt for user to enter the int to be searched
 	li $v0, 4
