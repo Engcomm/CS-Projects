@@ -1,0 +1,16 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+  vector<int> junda(5, 10);
+  for (auto c: junda) {
+    cout << c << ' ';
+  } 
+  cout << endl;
+
+
+
+  return 0;
+}
