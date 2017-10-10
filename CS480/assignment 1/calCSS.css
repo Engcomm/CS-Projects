@@ -1,0 +1,45 @@
+body {
+    background: url("Web-Page-Wallpaper-1.jpg") no-repeat fixed;
+}
+
+#calculator {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    padding-top: 150px;
+}
+
+button.pad {
+    color: crimson;
+    margin: 5px;
+    border-radius: 50%;
+    border: 0;
+    height: 40px;
+    width: 40px;
+    background-color: beige;
+    display: inline-block;
+    text-decoration: none;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+
+button.pad:hover {
+    background-color: lightcoral;
+}
+
+#zero, #equal{
+    width: 95px;
+    border-radius: 5px;
+}
+
+#screen {
+    height: 30px;
+    width: 200px;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 3px;
+    border-color: limegreen;
+    background-color: aliceblue;
+    text-align: right;
+    font-size: 30px;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Junda Lou">
+        <link rel="icon" href="calculator1600.png">
+        <script src="calc.js"></script>
+        <link rel="stylesheet" type="text/css" href="calCSS.css">
+    </head>
+
+    <body>
+        <div id='calculator'>
+            <input type="text" id="screen" value="0" disabled><br><br>
+            <button id="AC" class="pad" onclick="clearScreen()">AC</button>
+            <button id="neg" class="pad" onclick="posNeg()">+/-</button>
+            <button id="equal" class="pad" onclick="getOperator('=')">=</button>
+            <br>
+            <button id="1" class="pad" onclick="getNumber('1')">1</button>
+            <button id="2" class="pad" onclick="getNumber('2')">2</button>
+            <button id="3" class="pad" onclick="getNumber('3')">3</button>
+            <button id="*" class="pad" onclick="getOperator('*')">*</button>
+            <br>
+            <button id="4" class="pad" onclick="getNumber('4')">4</button>
+            <button id="5" class="pad" onclick="getNumber('5')">5</button>
+            <button id="6" class="pad" onclick="getNumber('6')">6</button>
+            <button id="÷" class="pad" onclick="getOperator('÷')">÷</button>
+            <br>
+            <button id="7" class="pad" onclick="getNumber('7')">7</button>
+            <button id="8" class="pad" onclick="getNumber('8')">8</button>
+            <button id="9" class="pad" onclick="getNumber('9')">9</button>
+            <button id="-" class="pad" onclick="getOperator('-')">-</button>
+            <br>
+            <button id="zero" class="pad" onclick="getNumber('0')">0</button>
+            <button id="." class="pad" onclick="getNumber('.')">.</button>
+            <button id="+" class="pad" onclick="getOperator('+')">+</button>
+        </div>
+        
+
+    </body>
+
+
+
+</html>

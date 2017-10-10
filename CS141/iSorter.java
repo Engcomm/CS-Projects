@@ -5,8 +5,8 @@
 
 public class iSorter extends Sorter{
     
-    private String[] input;
-
+	private String[] input;
+	
     public iSorter(String[] input) {
 	super(input);
     }

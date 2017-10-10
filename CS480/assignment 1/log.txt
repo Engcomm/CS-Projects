@@ -1,0 +1,24 @@
+Estimated time: 2 hours
+
+Requirements Analysis & Design:
+    Divide by 0 error.
+    Continuous calculation. Users don't have to press "=" for every calculation.
+    Positive, negative implementation.
+    Clear and beautiful GUI.
+    Time spent: 30 min
+
+Development: 
+    Encountered a lot of problems to satisfy these requirements.
+    Time spent: 3 hours
+
+Testing:
+    Test extreme numbers and requirements.
+    Time spent: 30 min
+
+Total Time Spent: 4 hours.
+
+Bugs:
+    When user press an operator, a new number should be entered.
+    Positive and Negative exchange.
+    Divide by 0 should be considered.
+    If user enter x+y, and they press another operator, the result should be displayed and a new number should be entered for the next calculation.
